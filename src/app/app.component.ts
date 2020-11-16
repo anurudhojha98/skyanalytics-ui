@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.getStockData();
+    this.getStockData1();
   }
   getStockData(){
     let obj={page:this.page,perPage:this.pageSize}
@@ -47,14 +48,15 @@ export class AppComponent implements OnInit {
       data: {data}
     });
     dialogConsentRef.afterClosed().subscribe(result => {
-      this.getStockData1();
+      // this.getStockData1();
     
     });
   }
   getStockData1(){
     this.socketService.getData().subscribe((data:any)=>{
-      this.getStockData();
-      // console.log(data)
+       this.ngOnInit();
+    
+
   
     })
   }

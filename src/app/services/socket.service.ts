@@ -17,7 +17,7 @@ export class SocketService {
 
 public getData = () => {
     return Observable.create((observer) => {
-        this.socket.on('new-stock', (data) => {
+        this.socket.on('new-stock1', (data) => {
             observer.next(data);
         });
     });
