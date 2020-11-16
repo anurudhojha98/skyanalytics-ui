@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Add Stock</h2>
+<mat-dialog-content class="mat-typography">
+        <form class="example-form" [formGroup]="addStockForm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Open Balance</mat-label>
+                  <input type="number" matInput placeholder="Open Balance"  formControlName="openBalenceFormControl" [errorStateMatcher]="matcher" required >
+                  <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+                  <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                  </mat-error> -->
+                  <mat-error *ngIf="addStockForm.get('openBalenceFormControl').hasError('required')">
+                    Open balance is <strong>required</strong>
+                  </mat-error>
+              
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>High Balance</mat-label>
+                    <input  type="number" matInput placeholder="High Balance"   formControlName="highBalenceFormControl" [errorStateMatcher]="matcher" required >
+                    <mat-error *ngIf="addStockForm.get('highBalenceFormControl').hasError('required')">
+                        High balance is <strong>required</strong>
+                      </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                        <mat-label>Low Balance</mat-label>
+                        <input  type="number" matInput placeholder="Low Balance"   formControlName="lowBalenceFormControl" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="addStockForm.get('lowBalenceFormControl').hasError('required')">
+                                Low balance is <strong>required</strong>
+                              </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                        <mat-label>Close Balance</mat-label>
+                        <input  type="number" matInput placeholder="Close Balance"  formControlName="closeBalenceFormControl" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="addStockForm.get('closeBalenceFormControl').hasError('required')">
+                                Close balance is <strong>required</strong>
+                        </mat-error>
+                </mat-form-field>
+                <mat-form-field color="accent" appearance="" class="example-full-width">
+                        <mat-label>Select Date</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="dateFormControl" [max]="maxDate" required>
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+              </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" color="warn" cdkFocusInitial [disabled]="!addStockForm.valid" (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>
